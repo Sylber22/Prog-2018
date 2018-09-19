@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1536585231 source:d:\bertello, silvana\arrays letras\main.c
+	<stdio.h>
+	<stdlib.h>
+
