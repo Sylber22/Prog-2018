@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1537967770 source:d:\bertello, silvana\practica\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"prueba.h"
+
+1537968088 d:\bertello, silvana\practica\prueba.h
+
+1537966696 source:d:\bertello, silvana\practica\prueba.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"prueba.h"
+
