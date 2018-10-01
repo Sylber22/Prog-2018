@@ -1,63 +1,87 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "persona.h"
+#include <ctype.h>
+#include "Funciones.h"
 
-#define CANT 3
+
+#define CANT 20
+
 
 int main()
 {
     char seguir='s';
-    int opcion=0;
-    EPersona personas[CANT];
+    char opcion=0;
+    Epersona Lista[CANT];
+    int posicion;
+    int dni;
+    char salir;
 
-    init(personas, CANT);
+    inicializaMatriz(Lista,CANT);
 
-    do
+    while(seguir=='s')
     {
-        printf("1- Agregar persona\n");
-        printf("2- Borrar persona\n");
-        printf("3- Modificar persona\n");
-        printf("4- Imprimir lista ordenada por apellido y nombre\n\n");
-        printf("5- Salir\n");
-
-        scanf("%d",&opcion);
-
+        imprimeMenu();
+        setbuf(stdin,NULL);
+        scanf("%c",&opcion);
         switch(opcion)
         {
-        case 1:
-             alta(personas, CANT);
-         break;
-
-        case 2://baja
-/*
-            printf("Documento: ");
-            scanf("%d",auxDoc);
-            for (i=0; i<CANT; i++)
+        case '1':
+            system("cls");
+            posicion=obtenerEspacioLibre(Lista,CANT);
+            if(posicion!= -1)
             {
-                if (auxLegajo==legajo[i])
+                AltaPersona(Lista,posicion);
+            }
+            break;
+            case '2':
+            system("cls");
+            printf("Ingrese el DNI de la persona que desea eliminar: ");
+            scanf("%d",&dni);
+            posicion=buscarPorDni(Lista,dni,CANT);
+            if (posicion==-1)
+            {
+                printf("No se encuenta el DNI \n");
+            }
+            else
+            {
+                printf("NOMBRE:%s \nDNI: %ld\n",Lista[posicion].nombre,Lista[posicion].dni);
+                setbuf(stdin,NULL);
+                printf("Desea eliminar? S/N \n");
+                setbuf(stdin,NULL);
+                scanf("%c",&salir);
+                salir=tolower(salir);
+                if(salir=='s')
                 {
-                    isEmpty[i]=1;
-                    flag=1;
+                    BorrarPersona(Lista,posicion);
+                    printf("La persona con el DNI ingresado, se elimino correctamente \n");
                 }
-                if (flag==0)
+                else
                 {
-                    printf("Dato no encontrado");
+                    printf("La operacion se cancelo\n");
+                    break;
                 }
-
-            }*/
-
+            }
                 break;
-        case 3://modificacion
-            break;
-        case 4://imprimir
-            break;
-        case 5://salir
-            seguir = 'n';
-            break;
+            case '3':
+                system("cls");
+                ordenaStruct(Lista,CANT);
+                ListarPersona(Lista,CANT);
+                break;
+            case '4':
+                system("cls");
+                //grafica edades
+                printf("\t\t\tGRAFICO DE EDADES\t\t\n");
+                GraficaEdades(Lista,CANT);
+                break;
+            case '5':
+                seguir = 'n';
+                break;
+            default:
+                system("cls");
+                printf("La opcion ingresada es incorrecta...\n");
+                setbuf(stdin,NULL);
         }
     }
-    while(seguir == 's');
-
     return 0;
 }
