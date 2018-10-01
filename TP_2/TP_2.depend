@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1537997156 source:d:\utn\programacion\tp_2\bibliotecatp2.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"BibliotecaTp2.h"
+
+1537998283 d:\utn\programacion\tp_2\bibliotecatp2.h
+
+1537997930 source:d:\utn\programacion\tp_2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"BibliotecaTp2.h"
+
